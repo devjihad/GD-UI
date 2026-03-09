@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dmt-gray: #d9d9d9;
+  --color-dmt-black2: #38435c;
+  --color-dmt-brand2: #DF3636;
+  --color-dmt-brand3: #ffe9e9;
+  --color-dmt-blue1: #4285fa;
+  --color-dmt-blue2: #f1f5ff;
+  --color-dmt-green1: #34a853;
+  --color-dmt-green2: #eff8f2;
+  --color-dmt-yellow1: #f88513;
+  --color-dmt-yellow2: #fdf5e6;
+  --color-dmt-gray1: #6f7b88;
+  --color-dmt-gray2: #a9b0b8;
+  --color-dmt-gray3: #e9f0f8;
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-[1140px] mx-auto;
+  }
+}
+
+
+.card {
+  position: relative;
+  border-radius: 20px;
+  padding: 2px; 
+  background: transparent;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px; 
+  background: linear-gradient(
+    135deg,
+    #ff8c00,  
+    #ff8c00,
+    #22c55e,  
+    #22c55e
+  );
+  background-size: 300% 300%;
+  animation: borderAnimation 2s linear infinite;
+   pointer-events: none;
+
+ 
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.card-inner {
+  background: #f3f3f3; /* your card bg */
+  border-radius: 18px;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes borderAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
